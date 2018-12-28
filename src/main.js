@@ -23,5 +23,11 @@ new Vue({
     created() {
         // 设置侧边栏菜单
         this.$store.commit('d2admin/menu/asideSet', menuAside)
+    },
+    mounted() {
+        // 用户登录后从cookies加载用户名
+        this.$store.commit('d2admin/user/load')
+        // 初始化全屏监听
+        this.$store.dispatch('d2admin/fullscreen/listen')
     }
 }).$mount('#app')

@@ -1,3 +1,4 @@
+import util from '@/util'
 export default {
     namespaced: true,
     state: {
@@ -10,8 +11,15 @@ export default {
          * @param {Object} state vuex state
          * @param {*} info info
          */
-        set(state, info) {
-            state.info = info
+        set(info) {
+            util.cookies.set('username', info)
+        },
+        /**
+         * @description 从cookies获取用户名
+         * @param {Object} state vuex state
+         */
+        load(state) {
+            state.info = JSON.parse(util.cookies.get('username'))
         }
     }
 }
